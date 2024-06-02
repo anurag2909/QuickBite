@@ -9,9 +9,16 @@ import ReactDOM from "react-dom/client";
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
 
-const JsxHeading = <h1 id = "heading" > Namastey React using JSX</h1>;
+const elem = <h1> Hello everyone!</h1>
+
+const title = <h1 className="head">{elem} Namastey React using JSX</h1>;
+
+const Heading = () => (
+  <div id="container">
+    {title}
+    <h1> Namastey React using Functional Component</h1>
+  </div>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(JsxHeading);
-
-
-
+root.render(<Heading />);
