@@ -5,14 +5,13 @@
 import React from "react"; // This is coming from node_modules
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "This is H1 Tag!"),
-    React.createElement("h2", {}, "This is H2 Tag!"),
-  ])
-);
+// const heading = React.createElement("h1", { id: "heading" }, "Namastey React");
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(heading);
 
+const JsxHeading = <h1 id = "heading" > Namastey React using JSX</h1>;
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+root.render(JsxHeading);
+
+
+
