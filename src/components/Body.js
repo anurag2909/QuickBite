@@ -31,8 +31,8 @@ const Body = () => {
     );
   };
 
-  if (OnlineStatus === false){
-    return <h1>Please check your internet connection!!</h1>
+  if (OnlineStatus === false) {
+    return <h1>Please check your internet connection!!</h1>;
   }
 
   if (listOfResturants.length == 0) {
@@ -41,18 +41,18 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex items-center">
+        <div className="search m-3 p-3">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="btn"
+            className="px-3 py-1 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               const filteredResturant = listOfResturants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -64,19 +64,21 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfResturants.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setFilteredResturant(filteredList);
-          }}
-        >
-          Top Rated Resturants!
-        </button>
+        <div>
+          <button
+            className="search px-4 py-1 bg-gray-100 rounded-lg"
+            onClick={() => {
+              const filteredList = listOfResturants.filter(
+                (res) => res.info.avgRating > 4.5
+              );
+              setFilteredResturant(filteredList);
+            }}
+          >
+            Top Rated Resturants!
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredResturant.map((resturant) => (
           <Link
             key={resturant.info.id}
