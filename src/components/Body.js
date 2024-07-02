@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withPromotedLabel } from "./ResturantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ const Body = () => {
   const [filteredResturant, setFilteredResturant] = useState("");
 
   const OnlineStatus = useOnlineStatus();
+  const ResturantCardPromoted = withPromotedLabel(ResturantCard);
 
   useEffect(() => {
     fetchData();
@@ -30,6 +31,7 @@ const Body = () => {
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
+
 
   if (OnlineStatus === false) {
     return <h1>Please check your internet connection!!</h1>;
@@ -84,7 +86,11 @@ const Body = () => {
             key={resturant.info.id}
             to={"/restaurants/" + resturant.info.id}
           >
-            <ResturantCard resData={resturant.info} />
+            {resturant.info.promoted ? (
+              <ResturantCardPromoted resData={resturant.info} />
+            ) : (
+              <ResturantCard resData={resturant.info} />
+            )}
           </Link>
         ))}
       </div>
