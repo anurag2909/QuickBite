@@ -1,7 +1,16 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
-  console.log(items);
+  //console.log(items);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+    // Dispatch an action
+    dispatch(addItem("Pudi-Sabji")); // whatever I will pass inside this, will go into the cart. This is my action.payload
+  };
 
   return (
     <div>
@@ -25,7 +34,12 @@ const ItemList = ({ items }) => {
           </div>
           <div className="w-3/12 p-4">
             <div className="absolute">
-              <button className="p-2 mx-16 bg-black text-white shadow-lg rounded-xl">Add +</button>
+              <button
+                className="p-2 mx-16 bg-black text-white shadow-lg rounded-xl"
+                onClick={handleAddItem}
+              >
+                Add +
+              </button>
             </div>
             <img
               src={CDN_URL + item.card.info.imageId}
