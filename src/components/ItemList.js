@@ -7,9 +7,9 @@ const ItemList = ({ items }) => {
 
   const dispatch = useDispatch();
 
-  const handleAddItem = () => {
+  const handleAddItem = (item) => {
     // Dispatch an action
-    dispatch(addItem("Pudi-Sabji")); // whatever I will pass inside this, will go into the cart. This is my action.payload
+    dispatch(addItem(item)); // whatever I will pass inside this, will go into the cart. This is my action.payload
   };
 
   return (
@@ -36,7 +36,7 @@ const ItemList = ({ items }) => {
             <div className="absolute">
               <button
                 className="p-2 mx-16 bg-black text-white shadow-lg rounded-xl"
-                onClick={handleAddItem}
+                onClick={() => handleAddItem(item)}
               >
                 Add +
               </button>

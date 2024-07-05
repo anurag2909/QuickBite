@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import Cart from "./Cart";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -14,7 +15,7 @@ const Header = () => {
   // Subscribing to the store using Selector, we just have subscribed to the small portion of the store
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
-  
+
   return (
     <div className="flex justify-between bg-green-100 shadow-lg mb-2">
       <div className="logo-container">
@@ -32,7 +33,9 @@ const Header = () => {
           <li className="px-4">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="px-4 font-bold">Cart - ({cartItems.length} Items)</li>
+          <li className="px-4 font-bold cursor-pointer">
+            <Link to="/cart">Cart - ({cartItems.length} Items)</Link>
+          </li>
           <button
             className="login"
             onClick={() => {
